@@ -28,7 +28,7 @@ notifications:
     rooms:
       - sync-from-docker-hub:5Q3mjXPHAuJ50LeUcUrfIWmx
     template:
-      - "registry.cn-hongkong.aliyuncs.com/$IMAGE:$TAG"
+      - "registry.cn-hongkong.aliyuncs.com/%{IMAGE}:%{TAG}"
       - "Message: %{commit_message}"
       - "Build result: %{result}"
   email:
