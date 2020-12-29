@@ -1,0 +1,27 @@
+language: go
+
+go:
+  - 1.15.5
+
+env:
+  - IMAGE=redis
+  - TAG=latest
+
+services:
+  - docker
+
+before_install:
+  - echo "$DOCKERPASSWD" | docker login -u "$DOCKERUSER" --password-stdin registry.cn-beijing.aliyuncs.com
+
+install:
+  - docker build -t registry.cn-beijing.aliyuncs.com/sync-hub-docker/$IMAGE:$TAG .
+
+after_success:
+  - docker push registry.cn-beijing.aliyuncs.com/sync-hub-docker/$IMAGE:$TAG
+
+notifications:
+  email:
+    recipients:
+      - ztao8607@gmail.com
+    on_success: always # default: change
+    on_failure: always # default: always
