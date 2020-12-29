@@ -17,6 +17,9 @@ before_install:
 install:
   - docker build -t registry.cn-beijing.aliyuncs.com/sync-hub-docker/$IMAGE:$TAG .
 
+script:
+  - echo "ignore go test command "
+
 after_success:
   - docker push registry.cn-beijing.aliyuncs.com/sync-hub-docker/$IMAGE:$TAG
 
