@@ -4,8 +4,9 @@ go:
   - 1.15.5
 
 env:
-  - IMAGE=redis
-  - TAG=latest
+  global:
+    - IMAGE=redis
+    - TAG=latest
 
 services:
   - docker
