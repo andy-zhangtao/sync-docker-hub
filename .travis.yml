@@ -12,16 +12,16 @@ services:
   - docker
 
 before_install:
-  - echo "$DOCKERPASSWD" | docker login -u "$DOCKERUSER" --password-stdin registry.cn-beijing.aliyuncs.com
+  - echo "$DOCKERPASSWD" | docker login -u "$DOCKERUSER" --password-stdin registry.cn-hongkong.aliyuncs.com
 
 install:
-  - docker build -t registry.cn-beijing.aliyuncs.com/sync-hub-docker/$IMAGE:$TAG .
+  - docker build -t registry.cn-hongkong.aliyuncs.com/sync-hub-docker/$IMAGE:$TAG .
 
 script:
   - echo "ignore go test command "
 
 after_success:
-  - docker push registry.cn-beijing.aliyuncs.com/sync-hub-docker/$IMAGE:$TAG
+  - docker push registry.cn-hongkong.aliyuncs.com/sync-hub-docker/$IMAGE:$TAG
 
 notifications:
   email:
