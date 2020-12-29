@@ -24,7 +24,13 @@ after_success:
   - docker push registry.cn-hongkong.aliyuncs.com/$IMAGE:$TAG
 
 notifications:
-  slack: sync-from-docker-hub:5Q3mjXPHAuJ50LeUcUrfIWmx
+  slack:
+    rooms:
+      - sync-from-docker-hub:5Q3mjXPHAuJ50LeUcUrfIWmx
+    template:
+      - "registry.cn-hongkong.aliyuncs.com/$IMAGE:$TAG"
+      - "Message: %{commit_message}"
+      - "Build result: %{result}"
   email:
     recipients:
       - ztao8607@gmail.com
