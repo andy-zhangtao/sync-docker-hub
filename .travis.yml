@@ -28,9 +28,9 @@ notifications:
     rooms:
       - sync-from-docker-hub:5Q3mjXPHAuJ50LeUcUrfIWmx
     template:
-      - registry.cn-hongkong.aliyuncs.com/$IMAGE:$TAG
-      - "Message: %{commit_message}"
-      - "Build result: %{result}"
+      - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch} by %{author} %{result} in %{duration}"
+      - "%{commit_message}"
+      - "Result: %{result}"
   email:
     recipients:
       - ztao8607@gmail.com
