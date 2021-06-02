@@ -22,10 +22,10 @@ script:
 
 after_success:
   - docker push registry.cn-hongkong.aliyuncs.com/$IMAGE:$TAG
-  - curl 'https://api.telegram.org/bot$TGBOOT/sendMessage?chat_id=-1001203454731&parse_mode=Markdown&text=*registry.cn-hongkong.aliyuncs.com/$IMAGE:$TAG SUCCESS*'
+  - curl "https://api.telegram.org/bot$TGBOOT/sendMessage?chat_id=-1001203454731&parse_mode=Markdown&text=*registry.cn-hongkong.aliyuncs.com/$IMAGE:$TAG SUCCESS*"
 
 after_failure:
-  - curl 'https://api.telegram.org/bot$TGBOOT/sendMessage?chat_id=-1001203454731&parse_mode=Markdown&text=*registry.cn-hongkong.aliyuncs.com/$IMAGE:$TAG FAILED*'
+  - curl "https://api.telegram.org/bot$TGBOOT/sendMessage?chat_id=-1001203454731&parse_mode=Markdown&text=*registry.cn-hongkong.aliyuncs.com/$IMAGE:$TAG FAILED*"
 notifications:
   slack:
     rooms:
