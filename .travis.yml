@@ -5,8 +5,8 @@ go:
 
 env:
   global:
-    - IMAGE=vikings/paddle
-    - TAG=latest
+    - IMAGE=vikings/golang
+    - TAG=alpine
 
 services:
   - docker
