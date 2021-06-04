@@ -5,6 +5,7 @@ go:
 
 env:
   global:
+    - AREA=beijing
     - IMAGE=vikings/golang
     - TAG=alpine
 
@@ -12,16 +13,16 @@ services:
   - docker
 
 before_install:
-  - echo "$DOCKERPASSWD" | docker login -u "$DOCKERUSER" --password-stdin registry.cn-hongkong.aliyuncs.com
+  - echo "$DOCKERPASSWD" | docker login -u "$DOCKERUSER" --password-stdin registry.cn-$AREA.aliyuncs.com
 
 install:
-  - docker build -t registry.cn-hongkong.aliyuncs.com/$IMAGE:$TAG .
+  - docker build -t registry.cn-$AREA.aliyuncs.com/$IMAGE:$TAG .
 
 script:
   - echo "ignore go test command "
 
 after_success:
-  - docker push registry.cn-hongkong.aliyuncs.com/$IMAGE:$TAG
+  - docker push registry.cn-$AREA.aliyuncs.com/$IMAGE:$TAG
   - curl "https://api.telegram.org/bot$TGBOOT/sendMessage?chat_id=-1001203454731&parse_mode=Markdown&text=*registry.cn-hongkong.aliyuncs.com/$IMAGE:$TAG SUCCESS*"
 
 after_failure:
