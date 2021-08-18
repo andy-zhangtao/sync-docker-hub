@@ -1,4 +1,4 @@
-FROM openjdk:11
+FROM openjdk:17-alpine3.14
 RUN apk --update add wget
 RUN wget http://mirror.switch.ch/mirror/apache/dist//jmeter/binaries/apache-jmeter-3.0.tgz
 RUN tar zxvf apache-jmeter-3.0.tgz
