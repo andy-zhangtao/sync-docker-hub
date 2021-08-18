@@ -6,7 +6,7 @@ go:
 env:
   global:
     - AREA=beijing
-    - IMAGE=vikings/golang
+    - IMAGE=vikings/jmeter
     - TAG=alpine
 
 services:
