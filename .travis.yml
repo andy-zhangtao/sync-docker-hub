@@ -6,8 +6,8 @@ go:
 env:
   global:
     - AREA=hongkong
-    - IMAGE=vikings/jmeter
-    - TAG=alpine
+    - IMAGE=vikings/node
+    - TAG=15-alpine-react-scripts
 
 services:
   - docker
