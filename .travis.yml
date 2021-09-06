@@ -6,8 +6,8 @@ go:
 env:
   global:
     - AREA=hongkong
-    - IMAGE=vikings/node
-    - TAG=15-alpine-react-scripts
+    - IMAGE=vikings/minikube
+    - TAG=gcr.io.k8s-minikube.kicbase
 
 services:
   - docker
