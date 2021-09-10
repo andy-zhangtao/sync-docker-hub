@@ -6,8 +6,8 @@ go:
 env:
   global:
     - AREA=hongkong
-    - IMAGE=vikings/minikube
-    - TAG=gcr.io.k8s-minikube.kicbase
+    - IMAGE=vikings/kubernetes
+    - TAG=build-env
 
 services:
   - docker
