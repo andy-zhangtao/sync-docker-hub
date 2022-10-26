@@ -6,8 +6,8 @@ go:
 env:
   global:
     - AREA=hongkong
-    - IMAGE=vikings/golang
-    - TAG=1.18.1-stretch
+    - IMAGE=vikings/nginx-ingress-controller-amd64
+    - TAG=0.31.0
 
 services:
   - docker
