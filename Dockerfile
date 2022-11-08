@@ -1,1 +1,6 @@
-FROM vikings/nginx-ingress-controller-amd64:0.30.0 \nENV  auth=ztao8607@gmail.com\nENV modify=1667915881 \nUSER root\nRUN  apk add  zlib zlib-dev unzip git gcc musl-dev && \\n    git config --global http.sslVerify \"false\" && \\n    luarocks install lua-zlib\nRUN  sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories    \nUSER www-data
+FROM vikings/nginx-ingress-controller-amd64:0.30.0
+ENV  auth=ztao8607@gmail.com
+ENV modify=1667915881 
+USER root
+RUN  apk add  zlib zlib-dev unzip git gcc musl-dev && git config --global http.sslVerify \"false\" && luarocks install lua-zlib\nRUN  sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories 
+USER www-data
