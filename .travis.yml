@@ -14,15 +14,18 @@ services:
 
 before_install:
   - echo "$DOCKERPASSWD" | docker login -u "$DOCKERUSER" --password-stdin registry.cn-$AREA.aliyuncs.com
+  - echo "$OFF-DOCKERPASSWD" | docker login -u "$OFF-DOCKERUSER" --password-stdin 
 
 install:
   - docker build -t registry.cn-$AREA.aliyuncs.com/$IMAGE:$TAG .
+  - docker tag registry.cn-$AREA.aliyuncs.com/$IMAGE:$TAG $IMAGE:$TAG  
 
 script:
   - echo "ignore go test command "
 
 after_success:
   - docker push registry.cn-$AREA.aliyuncs.com/$IMAGE:$TAG
+  - docker push $IMAGE:$TAG  
   - curl "https://api.telegram.org/bot$TGBOOT/sendMessage?chat_id=-1001203454731&parse_mode=Markdown&text=*registry.cn-$AREA.aliyuncs.com/$IMAGE:$TAG SUCCESS*"
 
 after_failure:
