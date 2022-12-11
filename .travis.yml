@@ -7,7 +7,7 @@ env:
   global:
     - AREA=hongkong
     - IMAGE=vikings/nginx-ingress-controller-amd64
-    - TAG=0.31.0
+    - TAG=0.31.1
 
 services:
   - docker
