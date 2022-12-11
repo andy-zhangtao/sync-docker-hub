@@ -14,7 +14,7 @@ services:
 
 before_install:
   - echo "$DOCKERPASSWD" | docker login -u "$DOCKERUSER" --password-stdin registry.cn-$AREA.aliyuncs.com
-  - echo "$OFF-DOCKERPASSWD" | docker login -u "$OFF-DOCKERUSER" --password-stdin 
+  - echo "$OFFDOCKERPASSWD" | docker login -u "$OFFDOCKERUSER" --password-stdin 
 
 install:
   - docker build -t registry.cn-$AREA.aliyuncs.com/$IMAGE:$TAG .
