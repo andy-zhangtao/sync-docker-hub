@@ -1,3 +1,3 @@
 FROM debian:stable
 RUN  apt-get update && \
-     apt-get install ca-certificates
+     apt-get install -y ca-certificates
