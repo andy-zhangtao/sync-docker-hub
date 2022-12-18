@@ -5,7 +5,7 @@ env:
     global:
         - AREA=hongkong
         - IMAGE=vikings/travis
-        - TAG=v1
+        - TAG=v2
 services:
     - docker
 before_install:
