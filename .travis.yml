@@ -4,8 +4,8 @@ go:
 env:
     global:
         - AREA=hongkong
-        - IMAGE=vikings/travis
-        - TAG=v2
+        - IMAGE=vikings/alpine
+        - TAG=v3
 services:
     - docker
 before_install:
