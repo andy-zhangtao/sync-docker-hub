@@ -1,2 +1,2 @@
-FROM alpine 
-RUN apk update && apk add -y git
+FROM alpine
+RUN apk update && apk add git
