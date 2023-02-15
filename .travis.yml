@@ -1,8 +1,6 @@
 language: go
-
 go:
   - 1.15.5
-
 env:
   global:
     - AREA=hongkong
@@ -11,20 +9,18 @@ env:
 
 services:
   - docker
-
 before_install:
   - echo "$DOCKERPASSWD" | docker login -u "$DOCKERUSER" --password-stdin registry.cn-$AREA.aliyuncs.com
-
+  - echo "$OFFDOCKERPASSWD" | docker login -u "$OFFDOCKERUSER" --password-stdin
 install:
   - docker build -t registry.cn-$AREA.aliyuncs.com/$IMAGE:$TAG .
-
+  - docker tag registry.cn-$AREA.aliyuncs.com/$IMAGE:$TAG $IMAGE:$TAG
 script:
   - echo "ignore go test command "
-
 after_success:
   - docker push registry.cn-$AREA.aliyuncs.com/$IMAGE:$TAG
+  - docker push $IMAGE:$TAG
   - curl "https://api.telegram.org/bot$TGBOOT/sendMessage?chat_id=-1001203454731&parse_mode=Markdown&text=*registry.cn-$AREA.aliyuncs.com/$IMAGE:$TAG SUCCESS*"
-
 after_failure:
   - curl "https://api.telegram.org/bot$TGBOOT/sendMessage?chat_id=-1001203454731&parse_mode=Markdown&text=*registry.cn-$AREA.aliyuncs.com/$IMAGE:$TAG FAILED*"
 notifications:
@@ -32,11 +28,11 @@ notifications:
     rooms:
       - sync-from-docker-hub:5Q3mjXPHAuJ50LeUcUrfIWmx
     template:
-      - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch} by %{author} %{result} in %{duration}"
-      - "%{commit_message}"
-      - "Result: %{result}"
+      - '"Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch} by %{author} %{result} in %{duration}"'
+      - '"%{commit_message}"'
+      - '"Result: %{result}"'
   email:
     recipients:
       - ztao8607@gmail.com
-    on_success: always # default: change
-    on_failure: always # default: always
+    on_success: always
+    on_failure: always
